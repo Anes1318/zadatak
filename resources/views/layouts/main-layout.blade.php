@@ -18,6 +18,8 @@
                             href="{{ route('post.create') }}">Napravi post</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="{{ route('post.index') }}">Moji postovi</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="{{ route('kontakt') }}">Kontakt</a></li>
                     @if ($ulogovaniuser->admin == true)
                         <li class="nav-item"><a
                                 class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('postadmin.index') }}">Svi postovi</a>

@@ -53,7 +53,8 @@ class PostController extends Controller
         $input['user_id'] = $user->id;
 
         $file = $request->picture;
-        $name = $file->getClientOriginalName();
+        
+        $name = time(). $file->getClientOriginalName();
         $file->move('images', $name);
         $input['picture'] = $name;
         Post::create($input);
@@ -107,7 +108,7 @@ class PostController extends Controller
                 // unlink(public_path('\images\\') . $post->picture);
             }
             $file = $request->picture;
-            $name = $file->getClientOriginalName();
+            $name = time() .  $file->getClientOriginalName();
             $file->move('images', $name);
             $input['picture'] = $name;
         }

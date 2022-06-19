@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
@@ -61,13 +63,33 @@ class BlogController extends Controller
                 // unlink(public_path('\images\profil\\') . $user->picture);
             }
             $file = $request->picture;
-            $name = $file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
             $file->move('images/profil', $name);
             $input['picture'] = $name;
         }
         $user->update($input);
         Session::flash('user-updated-message', 'Profil uspjesno uredjen!!');
         return redirect()->route('profil', $ulogovaniuser->slug);
+    }
+    public function kontakt()
+    {
+        $ulogovaniuser = Auth::user();
+        return view('contact', compact('ulogovaniuser'));
+    }
+    public function posaljimail(Request $request)
+    {
+        $data = [
+            'title' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'messages' => $request->message,
+
+        ];
+        Mail::send('email.test', $data, function ($message) {
+            $message->to('anocoka@gmail.com', 'Anes')->subject('SUBJEKAT');
+        });
+        Session::flash('email-sent-message', 'Poruka uspjesno poslata!');
+        return back();
     }
 
     /**

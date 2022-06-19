@@ -29,8 +29,8 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profiledit', [App\Http\Controllers\BlogController::class, 'profiledit'])->name('profiledit');
     Route::patch('/profilupdate', [App\Http\Controllers\BlogController::class, 'profilupdate'])->name('profilupdate');
-
-
+    Route::post('/posaljimail', [App\Http\Controllers\BlogController::class, 'posaljimail'])->name('posaljimail');
+    Route::get('/contact', [App\Http\Controllers\BlogController::class, 'kontakt'])->name('kontakt');
 
     // Route::post('/post/create', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
     // Route::get('/post', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
