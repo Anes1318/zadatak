@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
+
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -15,32 +19,55 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+    public function guestpost($slug)
     {
-      
-        $user = Auth::user();
-        $posts = Post::paginate(4);
-        return view('blog.index', compact('posts', 'user'));
+        $ulogovaniuser = Auth::user();
+        $post = Post::findBySlugOrFail($slug);
+        return view('post.show', compact('post', 'ulogovaniuser'));
     }
-    public function profil()
+    public function home()
     {
+        return view('home');
+    }
+    public function index()
+    {
+
+        $ulogovaniuser = Auth::user();
+        $posts = Post::paginate(4);
+        return view('blog.index', compact('posts', 'ulogovaniuser'));
+    }
+    public function profil($slug)
+    {
+        $ulogovaniuser = Auth::user();
+        $user = User::findBySlugOrFail($slug);
+        return view('nalog.profil', compact('user', 'ulogovaniuser'));
+    }
+    public function profiledit()
+    {
+        $ulogovaniuser = Auth::user();
         $user = Auth::user();
-        return view('blog.profil', compact('user'));
+        return view('nalog.edit', compact('user', 'ulogovaniuser'));
     }
     public function profilupdate(Request $request)
     {
+        $ulogovaniuser = Auth::user();
         $user = Auth::user();
         $input = $request->all();
         if ($request->picture) {
+            if ($user->picture) {
+
+                File::delete(public_path('\images\profil\\') . $user->picture);
+                // unlink(public_path('\images\profil\\') . $user->picture);
+            }
             $file = $request->picture;
             $name = $file->getClientOriginalName();
-            $file->move('images', $name);
+            $file->move('images/profil', $name);
             $input['picture'] = $name;
         }
         $user->update($input);
-        
-        Session::flash('user-edited-message', 'Profil uspjesno uredjen!');
-        return redirect('profil');
+        Session::flash('user-updated-message', 'Profil uspjesno uredjen!!');
+        return redirect()->route('profil', $ulogovaniuser->slug);
     }
 
     /**

@@ -30,7 +30,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="site-heading">
-                        <h1>Moji postovi</h1>
+                        <h1>Svi postovi</h1>
                     </div>
                 </div>
             </div>
@@ -50,12 +50,13 @@
         <div class="tabela">
             <table style="width: 80%" class="table table-bordered" id="dataTable" cellspacing="0">
 
-
+            
                 <thead>
                     <tr>
 
-                     
-                        <th style="width: 30%">Ime</th>
+                        <th>Id</th>
+                        <th>Profil</th>
+                        <th style="width: 30%">Naslov</th>
                         <th style="width: 11%">Slika</th>
                         <th style="width: 30%">Kratki Opis</th>
                         <th style="width: 30%">Opis</th>
@@ -68,32 +69,32 @@
                 </thead>
                 <tbody>
                     @foreach ($posts as $post)
-                        @if ($post->user_id == $ulogovaniuser->id)
-                            <tr>
-                     
-                            <td>{{ substr($post->title, 0, 13). '...' }}</td>
+                        <tr style="max-height: max-content;">
+                            <td>{{$post->id}}</td>
+                            <td>{{ $post->user->name }}</td>
+                            <td>{{ substr($post->title, 0, 13) . '...' }}</td>
                             <td><img height="100" width="auto"
-                                    src="/images/{{ $post->picture ? $post->picture : 'plejsholder.png' }}" alt=""></td>
+                                    src="/images/{{ $post->picture ? $post->picture : 'plejsholder.png' }}"
+                                    alt=""></td>
                             <td>{{ $post->short_description }}</td>
-                            <td> 
+                            <td>
                                 @php
-                                    echo substr($post->content, 0, 13). '...';
+                                    echo substr($post->content, 0, 13) . '...';
                                     
                                 @endphp
                             </td>
+                            
                             <td>{{ $post->created_at->diffForHumans() }}</td>
                             <td>{{ $post->updated_at->diffForHumans() }}</td>
                             <td>
-                                <form class="" action="{{ route('post.destroy', $post->id) }}"
-                                    method="post">
+                                <form class="" action="{{ route('postadmin.destroy', $post->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Izbrisi</button>
                                 </form>
                             </td>
                             <td>
-                                <form class="" action="{{ route('post.edit', $post->slug) }}"
-                                    method="post">
+                                <form class="" action="{{ route('postadmin.edit', $post->slug) }}" method="post">
                                     @csrf
                                     @method('GET')
                                     <button class="btn btn-success" type="submit">Uredi</button>
@@ -107,11 +108,8 @@
                                     <button class="btn btn-info " type="submit" name="btn btn-primary">Vidi
                                         vise</button>
                                 </form>
-
                             </td>
                         </tr>
-                        @endif
-                        
                     @endforeach
                 </tbody>
 

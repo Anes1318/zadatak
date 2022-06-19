@@ -18,7 +18,8 @@
         rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <script src="https://cdn.tiny.cloud/1/us3ykqq7sb8mvoc0c30d5ymf1im5i3qwj35qxmk1wkn42mpg/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/us3ykqq7sb8mvoc0c30d5ymf1im5i3qwj35qxmk1wkn42mpg/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
@@ -40,7 +41,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
-                        <h1>Napravite post</h1>
+                        <h1>Uredite post</h1>
                         <span class="subheading">Brzo i lako</span>
                     </div>
                 </div>
@@ -62,7 +63,10 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-                        {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\PostController@store', 'files' => true]) !!}
+
+                        <img height="200" width="auto" src="/images/{{ $post->picture }}" alt="">
+                        <hr>
+                        {!! Form::model($post, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\AdminPostsController@update', $post->slug], 'files' => true]) !!}
                         <div class="form-group">
                             {!! Form::label('title', 'Naslov') !!}
                             {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -75,17 +79,20 @@
                             {!! Form::label('content', 'Opis') !!}
                             {!! Form::textarea('content', null, ['id' => 'myeditorinstance', 'class' => 'form-control', 'rows' => 4]) !!}
                         </div>
+
                         <div class="form-group col-5">
                             {!! Form::label('picture', 'Slika:') !!}
                             {!! Form::file('picture', ['class' => 'form-control-file']) !!}
                         </div>
                         <br>
                         <div class="form-group">
-                            {!! Form::submit('Create Post', ['class' => 'btn btn-secondary']) !!}
+                            {!! Form::submit('Uredi Post', ['class' => 'btn btn-secondary']) !!}
                         </div>
                         {!! Form::close() !!}
 
                         <!-- Submit Button-->
+
+
 
                     </div>
                 </div>

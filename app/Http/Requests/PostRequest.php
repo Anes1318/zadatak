@@ -15,7 +15,7 @@ class PostRequest extends FormRequest
     {
         return true;
     }
-
+    protected $stopOnFirstFailure = true;
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,9 +23,10 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
-            'title' => 'required',
-            'short_description' => 'required',
+            'title' => 'required | max:120',
+            'short_description' => 'required | max:20',
             'content' => 'required',
             'picture' => 'required',
         ];
@@ -37,6 +38,7 @@ class PostRequest extends FormRequest
             'content.required' => 'Morate unijeti opis',
             'short_description.required' => 'Morate unijeti kratki opis',
             'picture.required' => 'Morate unijeti sliku',
+
         ];
     }
 }

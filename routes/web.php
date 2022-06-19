@@ -19,15 +19,41 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::resource('/post', 'App\Http\Controllers\PostController');
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('/postadmin', 'App\Http\Controllers\AdminPostsController');
+    Route::resource('/useradmin', 'App\Http\Controllers\AdminUsersController');
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profiledit', [App\Http\Controllers\BlogController::class, 'profiledit'])->name('profiledit');
+    Route::patch('/profilupdate', [App\Http\Controllers\BlogController::class, 'profilupdate'])->name('profilupdate');
+
+
+
+    // Route::post('/post/create', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+    // Route::get('/post', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
+    // Route::post('/post', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+    // Route::patch('/post/{slug}', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
+    // Route::delete('/post/{slug}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
+    // Route::get('/post/{slug}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
+    
+    Route::resource('/post', 'App\Http\Controllers\PostController');
+});
+Route::get('/profil/{slug}', [App\Http\Controllers\BlogController::class, 'profil'])->name('profil');
+// Route::get('/post/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+
 
 
 
 Route::resource('/blog', 'App\Http\Controllers\BlogController');
+Route::get('/guestpost/{slug}', [App\Http\Controllers\BlogController::class, 'guestpost'])->name('guestpost');
 Route::get('/', [App\Http\Controllers\BlogController::class, 'index'])->name('home');
-Route::get('/prijavashow', [App\Http\Controllers\NalogController::class, 'prijavashow'])->name('prijavashow');
-Route::get('/registracijashow', [App\Http\Controllers\NalogController::class, 'registracijashow'])->name('registracijashow');
-Route::post('/registracija', [App\Http\Controllers\NalogController::class, 'store'])->name('registracijastore');
 
-Route::get('/profil', [App\Http\Controllers\BlogController::class, 'profil'])->name('profil');
-Route::patch('/profilupdate', [App\Http\Controllers\BlogController::class, 'profilupdate'])->name('profilupdate');
+
+
+
+
+
+

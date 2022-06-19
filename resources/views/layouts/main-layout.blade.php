@@ -13,15 +13,39 @@
 
 
                 @if (Auth::check())
+
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="{{ route('post.create') }}">Napravi post</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="{{ route('post.index') }}">Moji postovi</a></li>
-
-                    <li class="nav-item"><a class="user_info nav-link py-lg-4"
-                            href="{{ route('profil') }}"><img class="user_slika" height="50"
-                                width="50" src="/images/{{ $user->picture ? $user->picture : 'plejsholder.png' }}"
-                                alt="slika">{{ $user->name }}</a></li>
+                    @if ($ulogovaniuser->admin == true)
+                        <li class="nav-item"><a
+                                class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('postadmin.index') }}">Svi postovi</a>
+                        </li>
+                        <li class="nav-item"><a
+                                class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('useradmin.index') }}">Svi profili</a>
+                        </li>
+                    @endif
+                    <li class="user_info nav-item dropdown">
+                        <a id="navbarDropdown" class="user_kartica dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown"><img class="user_slika" height="50"
+                                width="50"src="/images/profil/{{ $ulogovaniuser->picture ? $ulogovaniuser->picture : 'plejsholder.png' }}"alt="slika">{{ $ulogovaniuser->name }}</a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <div class="odjava_dugme">
+                                <form class="" action="{{ route('profil', $ulogovaniuser->slug) }}"
+                                    method="get">
+                                    @csrf
+                                    <button class="odjava_dugme btn btn-secondary" type="submit">Profil</button>
+                                </form>
+                            </div>
+                            <div class="odjava_dugme">
+                                <form class="" action="http://127.0.0.1:8000/logout" method="post">
+                                    @csrf
+                                    <button class="odjava_dugme btn btn-secondary" type="submit">Odjava</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
                 @else
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Prijavi
                             se</a></li>

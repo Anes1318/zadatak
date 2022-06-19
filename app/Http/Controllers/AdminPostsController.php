@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
-class PostController extends Controller
+class AdminPostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
+      
         $ulogovaniuser = Auth::user();
-
         $posts = Post::all();
-        return view('post.index', compact('posts', 'ulogovaniuser'));
+        return view('admin.posts.index', compact('ulogovaniuser', 'posts'));
     }
 
     /**
@@ -31,9 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        
-        $ulogovaniuser = Auth::user();
-        return view('post.create', compact('ulogovaniuser'));
+        //
     }
 
     /**
@@ -42,24 +39,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
-
-        $posts = Post::paginate(4);
-        $user = Auth::user();
-        // return $user;
-        $input = $request->all();
-
-        $input['user_id'] = $user->id;
-
-        $file = $request->picture;
-        $name = $file->getClientOriginalName();
-        $file->move('images', $name);
-        $input['picture'] = $name;
-        Post::create($input);
-
-        Session::flash('post-created-message', 'Post uspjesno napravljen!');
-        return redirect('/');
+        //
     }
 
     /**
@@ -68,12 +50,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
         
-        $ulogovaniuser = Auth::user();
-        $post = Post::findBySlugOrFail($slug);
-        return view('post.show', compact('post', 'ulogovaniuser'));
     }
 
     /**
@@ -86,7 +65,8 @@ class PostController extends Controller
     {
         $ulogovaniuser = Auth::user();
         $post = Post::findBySlugOrFail($slug);
-        return view('post.edit', compact('post', 'ulogovaniuser'));
+  
+        return view('admin.posts.edit', compact('post', 'ulogovaniuser'));
     }
 
     /**
@@ -115,7 +95,7 @@ class PostController extends Controller
         $post->update($input);
         Session::flash('post-edited-message', 'Post uspjesno uredjen!');
 
-        return redirect('/post');
+        return redirect('/post/admin');
     }
 
     /**
@@ -127,7 +107,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-        
         if ($post->picture) {
             File::delete(public_path('\images\\') . $post->picture);
             // unlink(public_path('\images\\') . $post->picture);

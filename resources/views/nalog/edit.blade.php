@@ -15,7 +15,14 @@
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-
+     <script src="https://cdn.tiny.cloud/1/us3ykqq7sb8mvoc0c30d5ymf1im5i3qwj35qxmk1wkn42mpg/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'code table lists',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        });
+    </script>
 </head>
 
 <body>
@@ -36,14 +43,9 @@
         </div>
     </header>
 
-    <img class="slika" height="200" width="auto" src="/images/{{ $user->picture ? $user->picture : 'plejsholder.png' }}"
-        alt="">
+    <img class="slika" height="200" width="auto"
+        src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
     <hr>
-    <div class="profil_content">
-        <p class="profil_ime">Ime: {{$user->name}}</p>
-        <p class="profil_email">Email: {{$user->email}}</p>
-        <p class="profil_o_meni">O meni: {{$user->about}}</p>
-    </div>
 
 
 
@@ -59,9 +61,9 @@
         </div>
         <div class="form-group">
             {!! Form::label('about', 'O meni') !!}
-            {!! Form::textarea('about', null, ['class' => 'form-control', 'rows' => 3]) !!}
+            {!! Form::textarea('about', null, ['id' => 'myeditorinstance','class' => 'form-control', 'rows' => 3]) !!}
         </div>
-
+        <br>
         <div class="form-group col-5">
             {!! Form::label('picture', 'Slika:') !!}
             {!! Form::file('picture', ['class' => 'form-control-file']) !!}

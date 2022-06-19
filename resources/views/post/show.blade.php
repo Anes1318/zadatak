@@ -48,7 +48,7 @@
         <div class="content">
             <h2>{{ $post->short_description }}</h2>
             {!! $post->content !!}
-            <h5>Postavio {{$post->user->name}}</h5>
+            Postavio <a href="{{ route('profil', $post->user->slug) }}"><b>{{ $post->user->name }}</b></a>
         </div>
 
         <!-- Submit Button-->

@@ -66,7 +66,7 @@
 
                         <img height="200" width="auto" src="/images/{{ $post->picture }}" alt="">
                         <hr>
-                        {!! Form::model($post, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\PostController@update', $post->id], 'files' => true]) !!}
+                        {!! Form::model($post, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\PostController@update', $post->slug], 'files' => true]) !!}
                         <div class="form-group">
                             {!! Form::label('title', 'Naslov') !!}
                             {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -86,7 +86,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            {!! Form::submit('Uredi Post', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Uredi Post', ['class' => 'btn btn-secondary']) !!}
                         </div>
                         {!! Form::close() !!}
 
