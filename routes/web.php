@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
+Route::get('/logout', function () {
+    return redirect('/logout');
+});
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('/postadmin', 'App\Http\Controllers\AdminPostsController');
