@@ -41,7 +41,7 @@
                                 </form>
                             </div>
                             <div class="odjava_dugme">
-                                <form class="" action="http://127.0.0.1:8000/logout" method="post">
+                                <form class="" action="/logout" method="post">
                                     @csrf
                                     <button class="odjava_dugme btn btn-secondary" type="submit">Odjava</button>
                                 </form>
