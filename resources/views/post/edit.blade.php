@@ -41,7 +41,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
-                        <h1>Uredite post</h1>
+                        <h1>Uredite objavu</h1>
                         <span class="subheading">Brzo i lako</span>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            {!! Form::submit('Uredi Post', ['class' => 'btn btn-secondary']) !!}
+                            {!! Form::submit('Uredi objavu', ['class' => 'btn btn-secondary']) !!}
                         </div>
                         {!! Form::close() !!}
 

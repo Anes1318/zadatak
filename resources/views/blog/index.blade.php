@@ -44,7 +44,7 @@
             <form class="" action="{{route('post.index')}}" method="get">
             @csrf
             
-            <button class="btn btn-primary" type="submit">Moji postovi</button>
+            <button class="btn btn-primary" type="submit">Moje objave</button>
             </form>
         </div>
     @endif

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Skoro pa dobar sajt</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="{{ asset('https://use.fontawesome.com/releases/v6.1.0/js/all.js') }}" crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
-                        <h1>Uredite post</h1>
+                        <h1>Uredite objavu</h1>
                         <span class="subheading">Brzo i lako</span>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            {!! Form::submit('Uredi Post', ['class' => 'btn btn-secondary']) !!}
+                            {!! Form::submit('Uredi objavu', ['class' => 'btn btn-secondary']) !!}
                         </div>
                         {!! Form::close() !!}
 
