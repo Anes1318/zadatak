@@ -81,8 +81,11 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Registruj se') }}
                                     </button>
+                                <a style="margin-left: 30px" href="{{ route('login') }}">Već imate profil?</a>
+                                    
                                 </div>
                             </div>
+                            
                         </form>
                     </div>
                 </div>

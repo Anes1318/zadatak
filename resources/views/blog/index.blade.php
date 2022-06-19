@@ -15,6 +15,7 @@
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
   
 
 </head>
