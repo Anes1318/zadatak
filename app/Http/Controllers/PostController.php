@@ -16,6 +16,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    
     public function index()
     {
         $ulogovaniuser = Auth::user();
@@ -24,6 +27,7 @@ class PostController extends Controller
         return view('post.index', compact('posts', 'ulogovaniuser'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
