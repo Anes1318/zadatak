@@ -361,7 +361,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: #0085a1;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 a:not([href]):not([class]),
@@ -4245,8 +4245,9 @@ fieldset:disabled .btn {
     list-style: none;
 }
 .user_kartica {
-    color: white;
+    color: rgb(255, 255, 255);
 }
+
 .user_info {
     position: relative;
     top: 10px;
@@ -4272,7 +4273,7 @@ fieldset:disabled .btn {
 }
 .nav-link:hover,
 .nav-link:focus {
-    opacity: 70%;
+    opacity: 100% !important;
 }
 .nav-link.disabled {
     color: #6c757d;
@@ -4315,7 +4316,7 @@ fieldset:disabled .btn {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #0085a1;
+    background-color: red;
 }
 
 .nav-fill > .nav-link,
@@ -4773,7 +4774,7 @@ fieldset:disabled .btn {
 }
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.2);
 }
 .navbar-light .navbar-nav .nav-link.disabled {
     color: rgba(0, 0, 0, 0.3);
@@ -5070,7 +5071,7 @@ fieldset:disabled .btn {
 }
 .page-link:hover {
     z-index: 2;
-    color: #0085a1;
+    color: red;
     background-color: #e9ecef;
     border-color: #dee2e6;
 }
@@ -11560,7 +11561,7 @@ blockquote {
 @media (min-width: 992px) {
     #mainNav {
         border-bottom: 1px solid black;
-        background: #007891;
+        background: #4a5054;
     }
     #mainNav .navbar-brand {
         color: #fff;
@@ -11574,7 +11575,7 @@ blockquote {
     }
     #mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
     #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
-        color: rgba(255, 255, 255, 0.1);
+        color: rgba(255,255,255, 0.65);
     }
 }
 @media (min-width: 992px) {
@@ -11591,21 +11592,21 @@ blockquote {
         top: -120px;
         transition: transform 0.2s;
         border-bottom: 1px solid white;
-        background-color: #007891;
+        background-color: #4a5054;
     }
     #mainNav.is-fixed .navbar-brand {
         color: #212529;
     }
     #mainNav.is-fixed .navbar-brand:focus,
     #mainNav.is-fixed .navbar-brand:hover {
-        color: #0085a1;
+        color: red;
     }
     #mainNav.is-fixed .navbar-nav > li.nav-item > a {
         color: #212529;
     }
     #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus,
     #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-        color: #0085a1;
+        color: red;
     }
     #mainNav.is-visible {
         /* if the user changes the scrolling direction, we show the header */
