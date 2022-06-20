@@ -4272,7 +4272,7 @@ fieldset:disabled .btn {
 }
 .nav-link:hover,
 .nav-link:focus {
-    opacity: 50%;
+    opacity: 70%;
 }
 .nav-link.disabled {
     color: #6c757d;

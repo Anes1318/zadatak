@@ -48,6 +48,7 @@
             </div>
         </div>
     </header>
+
     <!-- Main Content-->
     @if (session('email-sent-message'))
         <div class="sesija_message alert alert-success">
