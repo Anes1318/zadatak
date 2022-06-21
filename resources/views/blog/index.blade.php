@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Skoro pa dobar sajt</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+ 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -30,8 +30,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8. col-xl-7">
                     <div class="site-heading">
-                        <h1>Dobrodosli na moj personalni sajt</h1>
-                        <span class="subheading">Ja sam Anes Cokovic</span>
+                        <h1>Skoro pa dobar sajt</h1>
                     </div>
                 </div>
             </div>
@@ -49,9 +48,8 @@
         </div>
     @endif
     @foreach ($posts as $post)
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
+    <div class="postovi">
+    
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="{{ route('guestpost', $post->slug) }}">
@@ -67,11 +65,10 @@
                         </p>
                     </div>
                     <hr class="my-4" />
-                </div>
-            </div>
-        </div>
+     
+    </div>
     @endforeach
-    <div class="paginacija">
+    <div class="paginacija text-xs-center">
         {{ $posts->links() }}
 
     </div>

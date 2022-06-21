@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>{{ $user->name }}</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -29,14 +29,14 @@
         @if ($ulogovaniuser->id == $user->id)
             <h1 class="vas_profil">Vaš profil</h1>
             <img class="vasa_profil_slika" height="200" width="auto"
-        src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
+                src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
         @else
-          <img class="profil_slika" height="200" width="auto"
-        src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
+            <img class="profil_slika" height="200" width="auto"
+                src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
         @endif
     @else
-      <img class="profil_slika" height="200" width="auto"
-        src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
+        <img class="profil_slika" height="200" width="auto"
+            src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
     @endif
 
     @if (session('user-updated-message'))
@@ -47,7 +47,7 @@
 
     <hr>
     <div class="profil_content">
-        <p class="profil_ime">Ime: {{ $user->name }}</p>
+        <p class="profil_ime"> Ime: {{ $user->name }}</p>
         <p class="profil_email">Email: {{ $user->email }}</p>
         <p class="profil_o_meni">O meni: {!! $user->about !!}</p>
         @if (Auth::check())

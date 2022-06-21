@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Kontakt</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -76,7 +76,7 @@
             </div>
             <br>
             <div class="form-group">
-                {!! Form::submit('Posalji', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Posalji', ['class' => 'btn btn-outline-secondary']) !!}
             </div>
             {!! Form::close() !!}
 

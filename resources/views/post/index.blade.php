@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Skoro pa dobar sajt</title>
-    <link rel="icon" type="image/x-icon" href="assets/android-chrome-512x512" />
+    <title>Moje objave</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -54,7 +54,7 @@
                 <thead>
                     <tr>
 
-                     
+
                         <th style="width: 30%">Ime</th>
                         <th style="width: 11%">Slika</th>
                         <th style="width: 30%">Kratki Opis</th>
@@ -70,52 +70,55 @@
                     @foreach ($posts as $post)
                         @if ($post->user_id == $ulogovaniuser->id)
                             <tr>
-                     
-                            <td>{{ substr($post->title, 0, 13). '...' }}</td>
-                            <td><img height="100" width="auto"
-                                    src="/images/{{ $post->picture ? $post->picture : 'plejsholder.png' }}" alt=""></td>
-                            <td>{{ $post->short_description }}</td>
-                            <td> 
-                                @php
-                                    echo substr($post->content, 0, 13). '...';
-                                    
-                                @endphp
-                            </td>
-                            <td>{{ $post->created_at->diffForHumans() }}</td>
-                            <td>{{ $post->updated_at->diffForHumans() }}</td>
-                            <td>
-                                <form class="" action="{{ route('post.destroy', $post->id) }}"
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Izbrisi</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form class="" action="{{ route('post.edit', $post->slug) }}"
-                                    method="post">
-                                    @csrf
-                                    @method('GET')
-                                    <button class="btn btn-success" type="submit">Uredi</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form class="" action="{{ route('post.show', $post->slug) }}"
-                                    method="post">
-                                    @csrf
-                                    @method('GET')
-                                    <button class="btn btn-info " type="submit" name="btn btn-primary">Vidi
-                                        vise</button>
-                                </form>
 
-                            </td>
-                        </tr>
+                                <td>{{ substr($post->title, 0, 13) . '...' }}</td>
+                                <td><img height="100" width="auto"
+                                        src="/images/{{ $post->picture ? $post->picture : 'plejsholder.png' }}"
+                                        alt=""></td>
+                                <td>{{ $post->short_description }}</td>
+                                <td>
+                                    @php
+                                        echo substr($post->content, 0, 13) . '...';
+                                        
+                                    @endphp
+                                </td>
+                                <td>{{ $post->created_at->diffForHumans() }}</td>
+                                <td>{{ $post->updated_at->diffForHumans() }}</td>
+                                <td>
+                                    <form class="" action="{{ route('post.destroy', $post->id) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger" type="submit">Izbrisi</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="" action="{{ route('post.edit', $post->slug) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('GET')
+                                        <button class="btn btn-success" type="submit">Uredi</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="" action="{{ route('post.show', $post->slug) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('GET')
+                                        <button class="btn btn-info " type="submit" name="btn btn-primary">Vidi više</button>
+                                    </form>
+
+                                </td>
+                            </tr>
                         @endif
-                        
                     @endforeach
                 </tbody>
 
             </table>
+        </div>
+        <div class="paginacija text-xs-center">
+            {{ $posts->links() }}
+
         </div>
 
     @endif

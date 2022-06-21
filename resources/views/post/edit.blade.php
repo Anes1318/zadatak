@@ -64,7 +64,10 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
 
-                        <img height="200" width="auto" src="/images/{{ $post->picture }}" alt="">
+                        <div class="slika">
+                            <img class="" height="400" width="auto" src="/images/{{ $post->picture }}"
+                                alt="">
+                        </div>
                         <hr>
                         {!! Form::model($post, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\PostController@update', $post->slug], 'files' => true]) !!}
                         <div class="form-group">
@@ -86,7 +89,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            {!! Form::submit('Uredi objavu', ['class' => 'btn btn-secondary']) !!}
+                            {!! Form::submit('Uredi objavu', ['class' => 'btn btn-outline-secondary']) !!}
                         </div>
                         {!! Form::close() !!}
 

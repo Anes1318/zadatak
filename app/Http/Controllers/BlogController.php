@@ -28,6 +28,11 @@ class BlogController extends Controller
         $post = Post::findBySlugOrFail($slug);
         return view('post.show', compact('post', 'ulogovaniuser'));
     }
+    public function admin()
+    {
+        $ulogovaniuser = Auth::user();
+        return view('admin.index', compact('ulogovaniuser'));
+    }
     public function home()
     {
         return view('home');
@@ -36,7 +41,7 @@ class BlogController extends Controller
     {
 
         $ulogovaniuser = Auth::user();
-        $posts = Post::paginate(1);
+        $posts = Post::paginate(4);
         return view('blog.index', compact('posts', 'ulogovaniuser'));
     }
     public function profil($slug)

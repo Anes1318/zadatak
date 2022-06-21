@@ -1,3 +1,4 @@
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
 
@@ -21,11 +22,8 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="{{ route('kontakt') }}">Kontakt</a></li>
                     @if ($ulogovaniuser->admin == true)
-                        <li class="nav-item"><a
-                                class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('postadmin.index') }}">Sve objave</a>
-                        </li>
-                        <li class="nav-item"><a
-                                class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('useradmin.index') }}">Svi profili</a>
+                       <li class="nav-item"><a
+                                class="nav-link px-lg-3 py-3 py-lg-4"href="{{ route('admin') }}">Admin</a>
                         </li>
                     @endif
                     <li class="user_info nav-item dropdown">
@@ -99,7 +97,7 @@
 
                     </li>
                 </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+                <div class="small text-center text-muted fst-italic">Anes &copy; 2022</div>
             </div>
         </div>
     </div>

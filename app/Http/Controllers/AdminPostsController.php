@@ -19,7 +19,7 @@ class AdminPostsController extends Controller
     {
       
         $ulogovaniuser = Auth::user();
-        $posts = Post::all();
+        $posts = Post::paginate(5);
         return view('admin.posts.index', compact('ulogovaniuser', 'posts'));
     }
 
@@ -28,6 +28,8 @@ class AdminPostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
     public function create()
     {
         //
@@ -95,7 +97,7 @@ class AdminPostsController extends Controller
         $post->update($input);
         Session::flash('post-edited-message', 'Post uspjesno uredjen!');
 
-        return redirect('/post/admin');
+        return back();
     }
 
     /**

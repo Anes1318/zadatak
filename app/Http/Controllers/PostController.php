@@ -22,8 +22,9 @@ class PostController extends Controller
     public function index()
     {
         $ulogovaniuser = Auth::user();
+        // $posts = Post::paginate(2);
+        $posts = $ulogovaniuser->posts()->where('user_id', $ulogovaniuser->id)->paginate(5);
 
-        $posts = Post::all();
         return view('post.index', compact('posts', 'ulogovaniuser'));
     }
 

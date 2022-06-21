@@ -22,7 +22,14 @@ class AdminUsersController extends Controller
         $users = User::all();
         return view('admin.users.index', compact('ulogovaniuser', 'users'));
     }
-
+    public function uklonisliku($slug)
+    {
+        $user = User::findBySlugOrFail($slug);
+        $user->picture = null;
+        // return $user;
+        $user->save();
+        return back();
+    }
     /**
      * Show the form for creating a new resource.
      *

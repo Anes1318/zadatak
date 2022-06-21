@@ -25,10 +25,13 @@ Route::get('/logout', function () {
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('/postadmin', 'App\Http\Controllers\AdminPostsController');
     Route::resource('/useradmin', 'App\Http\Controllers\AdminUsersController');
+    Route::get('/admin', [App\Http\Controllers\BlogController::class, 'admin'])->name('admin');
+
 });
 
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/uklonisliku/{slug}', [App\Http\Controllers\AdminUsersController::class, 'uklonisliku'])->name('uklonisliku');
     Route::get('/profiledit', [App\Http\Controllers\BlogController::class, 'profiledit'])->name('profiledit');
     Route::patch('/profilupdate', [App\Http\Controllers\BlogController::class, 'profilupdate'])->name('profilupdate');
     Route::post('/posaljimail', [App\Http\Controllers\BlogController::class, 'posaljimail'])->name('posaljimail');

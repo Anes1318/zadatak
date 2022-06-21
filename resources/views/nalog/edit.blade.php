@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>{{ $user->name }}</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -15,7 +15,8 @@
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-     <script src="https://cdn.tiny.cloud/1/us3ykqq7sb8mvoc0c30d5ymf1im5i3qwj35qxmk1wkn42mpg/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/us3ykqq7sb8mvoc0c30d5ymf1im5i3qwj35qxmk1wkn42mpg/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
@@ -35,17 +36,23 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="site-heading">
-                        <h1>Vas profil</h1>
+                        <h1>Vaš profil</h1>
 
                     </div>
                 </div>
             </div>
         </div>
     </header>
-
-    <img class="slika" height="200" width="auto"
-        src="/images/profil/{{ $user->picture ? $user->picture : 'plejsholder.png' }}" alt="">
-    <hr>
+      <div class="slika">
+            <img class="" height="400" width="auto" src="images/profil/{{ $user->picture ?  $user->picture  : 'plejsholder.png'}}" alt="">
+        </div>  
+    @if ($user->picture)
+        <form class="ukloni_sliku_dugme" action="{{route('uklonisliku', $user->slug)}}" method="get">
+        @csrf
+        <button class="btn btn-outline-danger " type="submit">Ukloni sliku</button>
+        </form>
+    @endif
+  
 
 
 
@@ -61,7 +68,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('about', 'O meni') !!}
-            {!! Form::textarea('about', null, ['id' => 'myeditorinstance','class' => 'form-control', 'rows' => 3]) !!}
+            {!! Form::textarea('about', null, ['id' => 'myeditorinstance', 'class' => 'form-control', 'rows' => 3]) !!}
         </div>
         <br>
         <div class="form-group col-5">
@@ -70,7 +77,7 @@
         </div>
         <br>
         <div class="form-group">
-            {!! Form::submit('Uredi profil', ['class' => 'btn btn-secondary']) !!}
+            {!! Form::submit('Uredi profil', ['class' => 'btn btn-outline-secondary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

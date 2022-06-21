@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>{{$post->title}}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="{{ asset('https://use.fontawesome.com/releases/v6.1.0/js/all.js') }}" crossorigin="anonymous"></script>
@@ -42,8 +42,8 @@
     <!-- Main Content-->
 
     <main>
-        <div>
-            <img class="slika" height="300" width="auto" src="/images/{{ $post->picture }}" alt="">
+        <div class="slika">
+            <img  height="500" width="auto" src="/images/{{ $post->picture }}" alt="">
         </div>
         <div class="content">
             <h2>{{ $post->short_description }}</h2>
