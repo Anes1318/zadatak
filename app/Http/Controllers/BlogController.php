@@ -36,7 +36,7 @@ class BlogController extends Controller
     {
 
         $ulogovaniuser = Auth::user();
-        $posts = Post::paginate(4);
+        $posts = Post::paginate(1);
         return view('blog.index', compact('posts', 'ulogovaniuser'));
     }
     public function profil($slug)
